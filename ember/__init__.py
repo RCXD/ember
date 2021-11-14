@@ -27,6 +27,7 @@ def vectorize(irow, raw_features_string, X_path, y_path, extractor, nrows):
     """
     Vectorize a single sample of raw features and write to a large numpy file
     """
+    print('testing@@@@@@@@@@@@@@@@@')
     raw_features = json.loads(raw_features_string)
     feature_vector = extractor.process_raw_features(raw_features)
 
