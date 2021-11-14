@@ -63,6 +63,7 @@ def vectorize_subset(X_path, y_path, raw_feature_paths, extractor, nrows):
 
 
 def create_vectorized_features(data_dir, feature_version=2):
+    print("testing@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     """
     Create feature vectors from raw features and write them to disk
     """
