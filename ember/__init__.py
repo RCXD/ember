@@ -61,11 +61,11 @@ def vectorize_subset(X_path, y_path, raw_feature_paths, extractor, nrows):
         pass
 
 
-def create_vectorized_features(data_dir, feature_version=2):
+def create_vectorized_features(data_dir, feature_version=2, feature_selection=None):
     """
     Create feature vectors from raw features and write them to disk
     """
-    extractor = PEFeatureExtractor(feature_version)
+    extractor = PEFeatureExtractor(feature_version, feature_selection=feature_selection)
 
     print("Vectorizing training set")
     X_path = os.path.join(data_dir, "X_train.dat")
