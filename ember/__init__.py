@@ -27,7 +27,6 @@ def vectorize(irow, raw_features_string, X_path, y_path, extractor, nrows):
     """
     Vectorize a single sample of raw features and write to a large numpy file
     """
-    print('testing@@@@@@@@@@@@@@@@@')
     raw_features = json.loads(raw_features_string)
     feature_vector = extractor.process_raw_features(raw_features)
 
@@ -63,7 +62,6 @@ def vectorize_subset(X_path, y_path, raw_feature_paths, extractor, nrows):
 
 
 def create_vectorized_features(data_dir, feature_version=2):
-    print("testing@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     """
     Create feature vectors from raw features and write them to disk
     """
@@ -73,6 +71,7 @@ def create_vectorized_features(data_dir, feature_version=2):
     X_path = os.path.join(data_dir, "X_train.dat")
     y_path = os.path.join(data_dir, "y_train.dat")
     raw_feature_paths = [os.path.join(data_dir, "train_features_{}.jsonl".format(i)) for i in range(6)]
+    print(raw_feature_paths)
     nrows = sum([1 for fp in raw_feature_paths for line in open(fp)])
     vectorize_subset(X_path, y_path, raw_feature_paths, extractor, nrows)
 
