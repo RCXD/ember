@@ -487,17 +487,20 @@ class DataDirectories(FeatureType):
 class PEFeatureExtractor(object):
     ''' Extract useful features from a PE file, and return as a vector of fixed size. '''
 
-    def __init__(self, feature_version=2, print_feature_warning=True):
-        self.features = [
-            #ByteHistogram(),
-            #ByteEntropyHistogram(),
-            #StringExtractor(),
-            #GeneralFileInfo(),
-            HeaderFileInfo()#,
-            #SectionInfo(),
-            #ImportsInfo(),
-            #ExportsInfo()
-        ]
+    def __init__(self, feature_version=2, print_feature_warning=True, feature_selection=None):
+        if feature_selection is not None:
+            self.features=feature_selection
+        else:
+            self.features = [
+                ByteHistogram(),
+                ByteEntropyHistogram(),
+                StringExtractor(),
+                GeneralFileInfo(),
+                HeaderFileInfo(),
+                SectionInfo(),
+                ImportsInfo(),
+                ExportsInfo()
+            ]
         if feature_version == 1:
             if not lief.__version__.startswith("0.8.3"):
                 if print_feature_warning:

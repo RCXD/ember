@@ -83,14 +83,14 @@ def create_vectorized_features(data_dir, feature_version=2):
     vectorize_subset(X_path, y_path, raw_feature_paths, extractor, nrows)
 
 
-def read_vectorized_features(data_dir, subset=None, feature_version=2):
+def read_vectorized_features(data_dir, subset=None, feature_version=2, feature_selection=None):
     """
     Read vectorized features into memory mapped numpy arrays
     """
     if subset is not None and subset not in ["train", "test"]:
         return None
 
-    extractor = PEFeatureExtractor(feature_version)
+    extractor = PEFeatureExtractor(feature_version, feature_selection=feature_selection)
     ndim = extractor.dim
     X_train = None
     y_train = None
